@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by Max on 10/23/2017.
  */
 
-public class characterWindow extends Activity {
+public class CharacterListActivity extends Activity {
 
     ListView lv;
     Context context;
@@ -33,13 +33,13 @@ public class characterWindow extends Activity {
 
         //Setting the listview in the main activity to an adapter
         lv=(ListView) findViewById(R.id.shortQuotesListView);
-        lv.setAdapter(new shortQuoteAdapter(this, names, quotes));
+        lv.setAdapter(new QuoteListAdapter(this, position, names, quotes));
 
     }
 
 
-    public void launchShortQuoteWindow(View view) {
-        Intent i = new Intent(this, shortQuoteWindow.class);
+    public void launchQuoteListActivity(View view) {
+        Intent i = new Intent(this, QuoteListActivity.class);
         startActivity(i);
     }
 

@@ -9,20 +9,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static cs.dawson.myapplication.MainActivity.logIt;
 
-
-public class shortQuoteAdapter extends BaseAdapter {
+public class CharacterListAdapter extends BaseAdapter {
     Context context;
     String[] names;
     String[] shortQuotes;
+    int [] image;
     private static LayoutInflater inflater=null;
 
 
-    public shortQuoteAdapter(Context activity, String[] characterNames, String[] characterShortQuotes) {
+    public CharacterListAdapter(Context activity, String[] characterNames, int[] characterImgs, String[] quotes) {
         context=activity;
-        names = characterNames;
-        shortQuotes = characterShortQuotes;
+        names=characterNames;
+        image=characterImgs;
+        shortQuotes = quotes;
         inflater = (LayoutInflater)context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -44,21 +44,25 @@ public class shortQuoteAdapter extends BaseAdapter {
     public class Holder
     {
         TextView tv;
+        ImageView img;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         Holder holder=new Holder();
         View rowView;
-        rowView = inflater.inflate(R.layout.character_shortquotes, null);
-        holder.tv= (TextView) rowView.findViewById(R.id.shortQuotes);
-        holder.tv.setText(shortQuotes[position]); // Sets up the character name that you selected to title
+        rowView = inflater.inflate(R.layout.character_list, null);
+        holder.tv=(TextView) rowView.findViewById(R.id.characterNames);
+        holder.img=(ImageView) rowView.findViewById(R.id.characterImgs);
+        holder.tv.setText(names[position]);
+        holder.img.setImageResource(image[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   Toast.makeText(context, "You Clicked "+shortQuotes[position], Toast.LENGTH_LONG).show();
-                Intent Intent = new Intent(v.getContext(), shortQuoteWindow.class);
-                Intent.putExtra("position", position); //Grabs the position in the array, the user clicked on.
+                   Toast.makeText(context, "You Clicked "+ names[position], Toast.LENGTH_LONG).show();
+                Intent Intent = new Intent(v.getContext(), CharacterListActivity.class);
+                Intent.putExtra("position", position);
                 Intent.putExtra("names", names ); //Puts the character name array into intent
+                Intent.putExtra("images", image); //Puts the character imgs array into intent
                 Intent.putExtra("shortquotes", shortQuotes); //Puts the character short quotes array into Intent
                 v.getContext().startActivity(Intent);
             }

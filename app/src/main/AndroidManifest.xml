@@ -17,8 +17,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".characterWindow"
+            android:name=".CharacterListActivity"
             android:label="Overwatch Character Activity">
+        </activity>
+        <activity
+            android:name=".QuoteListActivity"
+            android:label="Short quotes from the character">
+        </activity>
+        <activity
+            android:name=".QuoteActivity"
+            android:label="Character Description">
         </activity>
 
     </application>

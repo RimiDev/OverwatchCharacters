@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         context=this;
         //Setting the listview in the main activity to an adapter
         lv=(ListView) findViewById(R.id.listView);
-        lv.setAdapter(new characterAdapter(this, characterNames ,characterImgs, characterShortQuotes));
+        lv.setAdapter(new CharacterListAdapter(this, characterNames ,characterImgs, characterShortQuotes));
 
     }
 
 
     public void launchCharacterWindow(View view) {
-        Intent i = new Intent(this, characterWindow.class);
+        Intent i = new Intent(this, CharacterListActivity.class);
         startActivity(i);
     }
 
