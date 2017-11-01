@@ -18,30 +18,30 @@ public class MainActivity extends AppCompatActivity {
     //CANT SEEM TO BE ABLE TO GET REFERENCE TO STRING RESOURCES (SINCE ITS STATIC)...
     public static String[] characterNames = {"Pharah","McCree","Genji","Reaper","Lucio", "Tracer"};
 
+    public static String[] characterQuotes = {"PharahDESC","McCreeDESC","GenjiDESC","ReaperDESC","LucioDESC", "TracerDESC"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         context=this;
 
         lv=(ListView) findViewById(R.id.listView);
-        lv.setAdapter(new CustomAdapter(this, dinoName ,dinoImgs));
+        lv.setAdapter(new CustomAdapter(this, characterNames ,characterImgs, characterQuotes));
 
 
     }
 
 
-    public void launchDinoWindow(View view) {
-        Intent i = new Intent(this, dinoWindow.class);
-
+    public void launchCharacterWindow(View view) {
+        Intent i = new Intent(this, characterWindow.class);
         startActivity(i);
-
     }
+
 
     public static void logIt(String msg) {
-        final String TAG = "DINO---------";
+        final String TAG = "OverWatchQuotes-------";
         Log.d(TAG, msg);
     }
 

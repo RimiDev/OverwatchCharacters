@@ -6,14 +6,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dinoName"
+        android:id="@+id/characterNames"
         android:textAlignment="center"
         android:textSize="50sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dinoDesc"
+        android:id="@+id/characterQuotes"
         android:textSize="20sp"
         android:textAlignment="center"/>
 
@@ -21,7 +21,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dinoImg" />
+        android:id="@+id/characterImgs" />
 
 
 

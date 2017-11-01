@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Overwatch character quotes</string>
+    <string name="characterTitle">Overwatch Characters</string>
 </resources>
