@@ -1,10 +1,7 @@
 package cs.dawson.myapplication;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,10 +9,8 @@ import android.widget.TextView;
  * Created by Max on 10/23/2017.
  */
 
-public class characterWindow extends Activity {
+public class shortQuoteWindow extends Activity {
 
-    ListView lv;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +19,18 @@ public class characterWindow extends Activity {
 
         int position = getIntent().getExtras().getInt("position");
         String[] names = getIntent().getExtras().getStringArray("names");
-        String[] quotes = getIntent().getExtras().getStringArray("shortquotes");
+        String[] quotes = getIntent().getExtras().getStringArray("quotes");
         int[] images = getIntent().getExtras().getIntArray("images");
 
 
         TextView tvName = (TextView) findViewById(R.id.characterNames);
         tvName.setText(names[position]);
 
-        //Setting the listview in the main activity to an adapter
-        lv=(ListView) findViewById(R.id.shortQuotesListView);
-        lv.setAdapter(new shortQuoteAdapter(this, names, quotes));
+        //ImageView img = (ImageView) findViewById(R.id.characterImgs);
+        //img.setImageResource(images[position]);
 
-    }
+        ListView lvshortQuotes = (ListView) findViewById(R.id.shortQuotesListView);
 
-
-    public void launchShortQuoteWindow(View view) {
-        Intent i = new Intent(this, shortQuoteWindow.class);
-        startActivity(i);
     }
 
 
