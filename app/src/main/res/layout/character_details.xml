@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="cs.dawson.myapplication.QuoteActivity">
 
 
     <TextView
@@ -11,7 +13,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="openDialog"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -25,28 +28,28 @@
         android:id="@+id/characterDoB"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:text="HEY"/>
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fullQuoteSelected"
         android:textAlignment="center"
-        android:text="HEY"/>
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dateAdded"
         android:textAlignment="center"
-        android:text="HEY"/>
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/urlReference"
         android:textAlignment="center"
-        android:text="HEY"/>
+        />
 
 
 

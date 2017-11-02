@@ -1,6 +1,7 @@
 package cs.dawson.myapplication;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,6 @@ public class QuoteListActivity extends Activity {
         Intent i = new Intent(this, QuoteActivity.class);
         startActivity(i);
     }
-
 
 
 

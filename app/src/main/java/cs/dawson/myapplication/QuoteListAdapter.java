@@ -55,7 +55,7 @@ public class QuoteListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                    Toast.makeText(context, "You Clicked "+shortQuotes[position], Toast.LENGTH_LONG).show();
-                Intent Intent = new Intent(v.getContext(), QuoteListActivity.class);
+                Intent Intent = new Intent(v.getContext(), QuoteActivity.class);
                 Intent.putExtra("position", position); //Grabs the position in the array, the user clicked on.
                 Intent.putExtra("names", names ); //Puts the character name array into intent
                 v.getContext().startActivity(Intent);
