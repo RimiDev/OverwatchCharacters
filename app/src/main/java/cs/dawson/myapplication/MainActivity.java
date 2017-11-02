@@ -52,12 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         allCharacters = new ArrayList<>();
         // loads data from database into the private variables
-        characterListAdapter = new CharacterListAdapter(this, allCharacters);
         loadData();
-        characterListAdapter.allCharacters = allCharacters;
-        passDataToAdapter();
-        lv=(ListView) findViewById(R.id.listView);
-        lv.setAdapter(characterListAdapter);
+
+
+        Log.d("allCharacters size333",allCharacters.size()+"");
 
 
         //displayStuff();
@@ -104,9 +102,10 @@ public class MainActivity extends AppCompatActivity {
                     OverwatchCharacter character = createCharacter(characterDatasnapshot);
                     Log.d("character name id :\t", characterDatasnapshot.child("nameId").getValue().toString());
                     allCharacters.add(character);
-                    Log.d("character List 1-1: ", allCharacters.get(0).getNameId());
+                    Log.d("allCharacters size",allCharacters.size()+"");
                 }
-                characterListAdapter.notifyDataSetChanged();
+                setData(allCharacters);
+                //characterListAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -115,6 +114,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+
+    private void setData(List<OverwatchCharacter> character){
+
+        //Accessing the quotes child
         mDatabase.child("quotes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -122,8 +128,14 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot quotesDatasnapshot : dataSnapshot.getChildren()) {
                     // create String[] object that will hold quotes for each character
                     String[] quotes = createCharacterQuotes(quotesDatasnapshot);
-                    setQuotesToCharacter(quotesDatasnapshot.child("nameId").getValue().toString(), quotes);
+                    // iterates through all OverwatchCharacter objects in the list looking for the
+                    // OverwatchCharacter object which has the nameId that matches the given name
+                    for (OverwatchCharacter c : allCharacters){
+                        if(c.getNameId().equals(quotesDatasnapshot.child("nameId").getValue().toString()))
+                            c.setQuotes(quotes);
+                    }
                 }
+
                 displayCharactersAndQuotes();
             }
 
@@ -133,6 +145,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+        lv=(ListView) findViewById(R.id.listView);
+        lv.setAdapter(new CharacterListAdapter(this, allCharacters));
+
+
+        Log.d("allCharacters size2222",allCharacters.size()+"");
     }
 
     /**
@@ -190,45 +210,6 @@ public class MainActivity extends AppCompatActivity {
         quotes[4] = dataSnapshot.child("quote5").getValue().toString();
 
         return quotes;
-    }
-
-    /**
-     * Sets the given quotes array to the OverwatchCharacter object based on the
-     * given name of character.
-     * @param characterName
-     */
-    private void setQuotesToCharacter(String characterName, String[] quotes){
-        // iterates through all OverwatchCharacter objects in the list looking for the
-        // OverwatchCharacter object which has the nameId that matches the given name
-        for (OverwatchCharacter c : allCharacters){
-            if(c.getNameId().equals(characterName))
-                c.setQuotes(quotes);
-        }
-    }
-
-    private void displayStuff(){
-        for(OverwatchCharacter c : allCharacters)
-            Log.d("display character", c.toString());
-    }
-
-    private void passDataToAdapter(){
-        context=this;
-        String[] characterNames = new String[5];
-        String[] characterImgs = new String[5];
-        // each character will have different quotes
-        // -> first we only display the icon and character name
-        //String[] characterQuotes = new String[5];
-        for(int i = 0; i < allCharacters.size(); i++){
-            OverwatchCharacter c = allCharacters.get(i);
-            characterNames[i] = c.getNameId();
-
-            //characterImgs[i] =
-
-        }
-
-
-        lv=(ListView) findViewById(R.id.listView);
-        lv.setAdapter(characterListAdapter);
     }
 
     public static void logIt(String msg) {
