@@ -1,6 +1,7 @@
 package cs.dawson.myapplication;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +24,13 @@ public class CharacterListAdapter extends BaseAdapter {
     public CharacterListAdapter(Context activity, List<OverwatchCharacter> allChars) {
         context=activity;
         allCharacters = allChars;
+        Log.d("AllcharsSize", allCharacters.size()+"");
         inflater = (LayoutInflater)context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return 0;
+        return allCharacters.size();
     }
 
     @Override
@@ -48,13 +50,14 @@ public class CharacterListAdapter extends BaseAdapter {
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-
+        Log.d("Reach getView" , allCharacters.size()+"");
         Holder holder=new Holder();
         View rowView;
         rowView = inflater.inflate(R.layout.character_list, null);
         holder.tv=(TextView) rowView.findViewById(R.id.characterNames);
-        holder.img=(ImageView) rowView.findViewById(R.id.characterImgs);
+        //holder.img=(ImageView) rowView.findViewById(R.id.characterImgs);
         holder.tv.setText(allCharacters.get(position).getNameId());
+        Log.d("holderTV",allCharacters.get(position).getNameId());
         //holder.img.setImageResource(image[position]);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +69,6 @@ public class CharacterListAdapter extends BaseAdapter {
                 Intent.putExtra("birthName", characterClicked.getBirthName()); //Puts the character name array into intent
                 Intent.putExtra("blurb", characterClicked.getBlurb()); //Puts the character imgs array into intent
                 Intent.putExtra("dateOfBirth", characterClicked.getDateOfBirth());
-                Intent.putExtra("description", characterClicked.getDescription());
                 Intent.putExtra("url", characterClicked.getInfoUrl());
                 Intent.putExtra("quotes", characterClicked.getQuotes());
                 v.getContext().startActivity(Intent);

@@ -24,13 +24,12 @@ public class QuoteListAdapter extends BaseAdapter {
     private static LayoutInflater inflater=null;
 
 
-    public QuoteListAdapter(Context activity, String name, String bName,  String blurby,  String dateOfB,  String desc,  String urlLink, String[] quotez) {
+    public QuoteListAdapter(Context activity, String name, String bName,  String blurby,  String dateOfB,  String urlLink, String[] quotez) {
         context=activity;
         nameId = name;
         birthName = bName;
         blurb = blurby;
         dateOfbirth = dateOfB;
-        description = desc;
         url = urlLink;
         quotes = quotez;
 
@@ -39,7 +38,8 @@ public class QuoteListAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return 0;
+
+        return 5;
     }
 
     @Override
@@ -72,9 +72,8 @@ public class QuoteListAdapter extends BaseAdapter {
                 Intent.putExtra("birthName", birthName); //Puts the character name array into intent
                 Intent.putExtra("blurb", blurb); //Puts the character imgs array into intent
                 Intent.putExtra("dateOfBirth", dateOfbirth);
-                Intent.putExtra("description", description);
                 Intent.putExtra("url", url);
-                Intent.putExtra("quote", quotes[position]);
+                Intent.putExtra("quote", quotes[position]); // puts the selected quote into intent
                 v.getContext().startActivity(Intent);
             }
 

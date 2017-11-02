@@ -31,7 +31,6 @@ public class QuoteListActivity extends Activity {
         birthName = getIntent().getExtras().getString("birthName");
         blurb = getIntent().getExtras().getString("blurb");
         dateOfbirth = getIntent().getExtras().getString("dateOfbirth");
-        description = getIntent().getExtras().getString("description");
         url = getIntent().getExtras().getString("url");
         quotes = getIntent().getExtras().getStringArray("quotes");
 
@@ -41,7 +40,7 @@ public class QuoteListActivity extends Activity {
 
 
         ListView lvshortQuotes = (ListView) findViewById(R.id.shortQuotesListView);
-        lvshortQuotes.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, description, url, quotes));
+        lvshortQuotes.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes));
 
     }
 

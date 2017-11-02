@@ -33,7 +33,6 @@ public class CharacterListActivity extends Activity {
         birthName = getIntent().getExtras().getString("birthName");
         blurb = getIntent().getExtras().getString("blurb");
         dateOfbirth = getIntent().getExtras().getString("dateOfbirth");
-        description = getIntent().getExtras().getString("description");
         url = getIntent().getExtras().getString("url");
         quotes = getIntent().getExtras().getStringArray("quotes");
 
@@ -43,7 +42,7 @@ public class CharacterListActivity extends Activity {
 
         //Setting the listview in the main activity to an adapter
         lv=(ListView) findViewById(R.id.shortQuotesListView);
-        lv.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, description, url, quotes));
+        lv.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes));
 
     }
 
