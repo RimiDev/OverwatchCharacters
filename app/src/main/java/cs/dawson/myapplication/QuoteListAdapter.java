@@ -5,24 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static cs.dawson.myapplication.MainActivity.logIt;
 
-
-public class CustomAdapter extends BaseAdapter {
+public class QuoteListAdapter extends BaseAdapter {
     Context context;
     String[] names;
-    String[] quotes;
-    int [] image;
+    String[] shortQuotes;
+    int position;
     private static LayoutInflater inflater=null;
-    public CustomAdapter(MainActivity mainActivity, String[] characterNames, int[] characterImgs, String[] characterQuotes) {
-        context=mainActivity;
-        names=characterNames;
-        quotes=characterQuotes;
-        image=characterImgs;
+
+
+    public QuoteListAdapter(Context activity, int pos, String[] characterNames, String[] characterShortQuotes) {
+        context=activity;
+        position = pos;
+        names = characterNames;
+        shortQuotes = characterShortQuotes;
         inflater = (LayoutInflater)context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -44,28 +43,21 @@ public class CustomAdapter extends BaseAdapter {
     public class Holder
     {
         TextView tv;
-        ImageView img;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         Holder holder=new Holder();
         View rowView;
-        rowView = inflater.inflate(R.layout.character_list, null);
-        holder.tv=(TextView) rowView.findViewById(R.id.textView1);
-        holder.img=(ImageView) rowView.findViewById(R.id.imageView1);
-        holder.tv.setText(names[position]);
-        holder.img.setImageResource(image[position]);
-        logIt(image[position]+"");
+        rowView = inflater.inflate(R.layout.character_shortquotes, null);
+        holder.tv= (TextView) rowView.findViewById(R.id.shortQuotes);
+        holder.tv.setText(shortQuotes[position]); // Sets up the character name that you selected to title
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   Toast.makeText(context, "You Clicked "+names[position], Toast.LENGTH_LONG).show();
-                Intent Intent = new Intent(v.getContext(), characterWindow.class);
-                Intent.putExtra("position", position);
+                   Toast.makeText(context, "You Clicked "+shortQuotes[position], Toast.LENGTH_LONG).show();
+                Intent Intent = new Intent(v.getContext(), QuoteActivity.class);
+                Intent.putExtra("position", position); //Grabs the position in the array, the user clicked on.
                 Intent.putExtra("names", names ); //Puts the character name array into intent
-                Intent.putExtra("images", image); //Puts the character imgs array into intent
-                Intent.putExtra("quotes", quotes);
                 v.getContext().startActivity(Intent);
             }
 
