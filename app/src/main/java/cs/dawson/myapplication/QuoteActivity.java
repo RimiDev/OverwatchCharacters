@@ -62,7 +62,7 @@ public class QuoteActivity extends Activity {
     public void openDialog(View v) {
         final Dialog dialog = new Dialog(this); // Context, this, etc.
         dialog.setContentView(R.layout.blurbdialog);
-        TextView tv = (TextView) v.findViewById
+        //TextView tv = (TextView) v.findViewById
         dialog.setTitle("title");
         dialog.show();
     }
