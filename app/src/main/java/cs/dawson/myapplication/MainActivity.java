@@ -20,7 +20,7 @@ import java.util.List;
 
 import cs.dawson.entities.OverwatchCharacter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuActivity {
 
     ListView lv;
     Context context;
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context=this;
+
         //Setting the listview in the main activity to an adapter
 
 
