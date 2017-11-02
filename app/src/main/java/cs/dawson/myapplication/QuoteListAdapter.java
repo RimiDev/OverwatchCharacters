@@ -8,26 +8,38 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cs.dawson.entities.OverwatchCharacter;
+
 
 public class QuoteListAdapter extends BaseAdapter {
     Context context;
-    String[] names;
-    String[] shortQuotes;
-    int position;
+    String nameId;
+    String birthName;
+    String blurb;
+    String dateOfbirth;
+    String description;
+    String url;
+    String[] quotes;
+
     private static LayoutInflater inflater=null;
 
 
-    public QuoteListAdapter(Context activity, int pos, String[] characterNames, String[] characterShortQuotes) {
+    public QuoteListAdapter(Context activity, String name, String bName,  String blurby,  String dateOfB,  String urlLink, String[] quotez) {
         context=activity;
-        position = pos;
-        names = characterNames;
-        shortQuotes = characterShortQuotes;
+        nameId = name;
+        birthName = bName;
+        blurb = blurby;
+        dateOfbirth = dateOfB;
+        url = urlLink;
+        quotes = quotez;
+
         inflater = (LayoutInflater)context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return names.length;
+
+        return 5;
     }
 
     @Override
@@ -50,14 +62,18 @@ public class QuoteListAdapter extends BaseAdapter {
         View rowView;
         rowView = inflater.inflate(R.layout.character_shortquotes, null);
         holder.tv= (TextView) rowView.findViewById(R.id.shortQuotes);
-        holder.tv.setText(shortQuotes[position]); // Sets up the character name that you selected to title
+        holder.tv.setText(quotes[position]); // Sets up the character name that you selected to title
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   Toast.makeText(context, "You Clicked "+shortQuotes[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "You Clicked "+ quotes[position], Toast.LENGTH_LONG).show();
                 Intent Intent = new Intent(v.getContext(), QuoteActivity.class);
-                Intent.putExtra("position", position); //Grabs the position in the array, the user clicked on.
-                Intent.putExtra("names", names ); //Puts the character name array into intent
+                Intent.putExtra("nameId",nameId);
+                Intent.putExtra("birthName", birthName); //Puts the character name array into intent
+                Intent.putExtra("blurb", blurb); //Puts the character imgs array into intent
+                Intent.putExtra("dateOfBirth", dateOfbirth);
+                Intent.putExtra("url", url);
+                Intent.putExtra("quote", quotes[position]); // puts the selected quote into intent
                 v.getContext().startActivity(Intent);
             }
 

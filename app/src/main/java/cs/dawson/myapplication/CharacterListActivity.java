@@ -16,24 +16,33 @@ public class CharacterListActivity extends Activity {
 
     ListView lv;
     Context context;
+    String nameId;
+    String birthName;
+    String blurb;
+    String dateOfbirth;
+    String description;
+    String url;
+    String[] quotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_shortquotes);
 
-        int position = getIntent().getExtras().getInt("position");
-        String[] names = getIntent().getExtras().getStringArray("names");
-        String[] quotes = getIntent().getExtras().getStringArray("shortquotes");
-        int[] images = getIntent().getExtras().getIntArray("images");
+        nameId = getIntent().getExtras().getString("nameId");
+        birthName = getIntent().getExtras().getString("birthName");
+        blurb = getIntent().getExtras().getString("blurb");
+        dateOfbirth = getIntent().getExtras().getString("dateOfbirth");
+        url = getIntent().getExtras().getString("url");
+        quotes = getIntent().getExtras().getStringArray("quotes");
 
 
         TextView tvName = (TextView) findViewById(R.id.characterNames);
-        tvName.setText(names[position]);
+        tvName.setText(nameId);
 
         //Setting the listview in the main activity to an adapter
         lv=(ListView) findViewById(R.id.shortQuotesListView);
-        lv.setAdapter(new QuoteListAdapter(this, position, names, quotes));
+        lv.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes));
 
     }
 

@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-    <ImageView
-        android:id="@+id/characterImgs"
-        android:layout_gravity="center"
-        android:layout_width="48dp"
-        android:layout_height="48dp"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/characterImgs"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="48dp"-->
+        <!--android:layout_height="48dp"/>-->
 
 
     <TextView
