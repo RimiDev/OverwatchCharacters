@@ -14,22 +14,34 @@ import android.widget.TextView;
 
 public class QuoteListActivity extends Activity {
 
+    String nameId;
+    String birthName;
+    String blurb;
+    String dateOfbirth;
+    String description;
+    String url;
+    String[] quotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.character_shortquotes);
 
-        int position = getIntent().getExtras().getInt("position");
-        String[] names = getIntent().getExtras().getStringArray("names");
-        String[] quotes = getIntent().getExtras().getStringArray("shortquotes");
-        int[] images = getIntent().getExtras().getIntArray("images");
+        nameId = getIntent().getExtras().getString("nameId");
+        birthName = getIntent().getExtras().getString("birthName");
+        blurb = getIntent().getExtras().getString("blurb");
+        dateOfbirth = getIntent().getExtras().getString("dateOfbirth");
+        description = getIntent().getExtras().getString("description");
+        url = getIntent().getExtras().getString("url");
+        quotes = getIntent().getExtras().getStringArray("quotes");
 
         TextView tvName = (TextView) findViewById(R.id.characterNames);
-        tvName.setText(names[position]);
+        tvName.setText(nameId);
+
+
 
         ListView lvshortQuotes = (ListView) findViewById(R.id.shortQuotesListView);
-        lvshortQuotes.setAdapter(new QuoteListAdapter(this, position, names, quotes));
+        lvshortQuotes.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, description, url, quotes));
 
     }
 
@@ -44,4 +56,4 @@ public class QuoteListActivity extends Activity {
 
 
 
-        }
+}
