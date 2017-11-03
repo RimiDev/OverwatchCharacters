@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
  * Created by Max on 10/23/2017.
  */
 
-public class QuoteActivity extends Activity {
+public class QuoteActivity extends MenuActivity {
 
     Bundle savedInstance;
 

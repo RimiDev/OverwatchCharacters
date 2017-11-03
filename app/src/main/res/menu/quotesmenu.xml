@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <item android:id="@+id/about"
+        android:title="About" />
+    <item android:id="@+id/random"
+        android:title="Random" />
+    <item android:id="@+id/last"
+        android:title="Last" />
+</menu>

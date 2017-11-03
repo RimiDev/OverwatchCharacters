@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by Max on 10/23/2017.
  */
 
-public class QuoteListActivity extends Activity {
+public class QuoteListActivity extends MenuActivity {
 
     String nameId;
     String birthName;
