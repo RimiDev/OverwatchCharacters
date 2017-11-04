@@ -9,14 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Random;
-
-import cs.dawson.entities.OverwatchCharacter;
 
 /**
  * The following class is the Activity class for the Quote List.
@@ -108,11 +102,5 @@ public class QuoteListActivity extends AppCompatActivity {
         }
         // if there is nothing saved, nothing will get loaded.
     }
-
-
-
-
-
-
 
 }

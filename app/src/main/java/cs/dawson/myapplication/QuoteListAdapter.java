@@ -1,22 +1,13 @@
 package cs.dawson.myapplication;
+
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import cs.dawson.entities.OverwatchCharacter;
-
-import static android.content.Context.MODE_PRIVATE;
-
 
 /**
  * The following class is the Adapter for the QuoteListActivity.
@@ -53,8 +44,7 @@ public class QuoteListAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-
-        return 5;
+        return 5; //returns how many rows in the list view
     }
 
     @Override
@@ -77,6 +67,7 @@ public class QuoteListAdapter extends BaseAdapter {
         View rowView;
         rowView = inflater.inflate(R.layout.character_shortquotes, null);
         holder.tv= (TextView) rowView.findViewById(R.id.shortQuotes);
+        holder.tv.setTextColor(Color.WHITE);
         // using a String variable that will hold the first 30 characters of a
         // quote if the quote is greater than 30 characters in total.
         String thirtyCharsQuote = quotes[position];

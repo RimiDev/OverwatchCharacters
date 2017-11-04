@@ -1,6 +1,7 @@
 package cs.dawson.myapplication;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +77,7 @@ public class CharacterListAdapter extends BaseAdapter {
         View rowView;
         rowView = inflater.inflate(R.layout.character_list, null);
         holder.tv=(TextView) rowView.findViewById(R.id.characterNames);
+        holder.tv.setTextColor(Color.WHITE);
         holder.img=(ImageView) rowView.findViewById(R.id.characterImgs);
         holder.tv.setText(allCharacters.get(position).getNameId());
         Log.d("holderTV",allCharacters.get(position).getNameId());

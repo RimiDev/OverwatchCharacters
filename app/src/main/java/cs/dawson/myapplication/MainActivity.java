@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -47,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
       
         context=this;
 
-        //Setting the listview in the main activity to an adapter
-
-
-        // log in to database
+      // log in to database
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // login as user
@@ -96,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
      * The following method gets a random character from the list of all the characters
      * and will get a random quote of that character.
      */
-    private void getRandomCharacterAndQuote(){
+    public void getRandomCharacterAndQuote(){
         Random rand = new Random();
         int randNum = rand.nextInt(allCharacters.size());
         OverwatchCharacter overwatchCharacter = allCharacters.get(randNum);

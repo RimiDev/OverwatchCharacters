@@ -1,6 +1,5 @@
 package cs.dawson.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,14 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Random;
-
-import cs.dawson.entities.OverwatchCharacter;
 
 /**
  * The following class is the Activity for the listing of characters quotes.

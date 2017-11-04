@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Overwatch character quotes</string>
     <string name="characterTitle">Overwatch Characters</string>
     <string name="exit">Exit</string>
     <string name="characterDialogTitle">More about </string>
@@ -12,6 +11,6 @@
     <string name="preference_file_key">MyFile</string>
 
 
-    <string name="appInfo">This app displays a list of characters from the video game Overwatch which related images and icons. </string>
+    <string name="appInfo">This app displays a list of our favourite characters from the video game Overwatch. </string>
     <string name="teamMates"> © This app was developped by Zahraa Horeibi and Maxime Lacasse</string>
 </resources>
