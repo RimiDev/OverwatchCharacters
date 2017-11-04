@@ -111,11 +111,11 @@ public class QuoteActivity extends AppCompatActivity {
 
             Intent i = new Intent(this, QuoteActivity.class);
             i.putExtra("nameId", nameId);
-            i.putExtra("birthName", birthName); //Puts the character name array into intent
-            i.putExtra("blurb", blurb); //Puts the character imgs array into intent
+            i.putExtra("birthName", birthName);
+            i.putExtra("blurb", blurb);
             i.putExtra("dateOfBirth", dateOfBirth);
             i.putExtra("url", url);
-            i.putExtra("quote", quote); // puts the selected quote into intent
+            i.putExtra("quote", quote);
             i.putExtra("imageUri", imageUri);
             i.putExtra("dateAdded", dateAdded);
             startActivity(i);
@@ -155,16 +155,16 @@ public class QuoteActivity extends AppCompatActivity {
 
         //data of birth of character
         TextView characterDoBTv = (TextView) findViewById(R.id.characterDoB);
-        characterDoBTv.setText(dateOfbirth); //FILLER FOR DATE OF BIRTH
+        characterDoBTv.setText(dateOfbirth);
         //quote full
         TextView fullQuoteSelectedTv = (TextView) findViewById(R.id.fullQuoteSelected);
-        fullQuoteSelectedTv.setText(quote); //FILLER FOR QUOTE SELECTED
+        fullQuoteSelectedTv.setText(quote);
         //date added
         TextView dateAddedTv = (TextView) findViewById(R.id.dateAdded);
-        dateAddedTv.setText(dateAdded); //FILLER FOR THE DATE WE ADDED THE CHARACTER TO DATABASE????
+        dateAddedTv.setText("Added: " + dateAdded);
         //reference
         TextView urlReference = (TextView) findViewById(R.id.urlReference);
-        urlReference.setText(url); //FILLER FOR THE URL --> MAKE THIS CLICKABLE AND REDIRECT TO CHROME AT THIS URL? INTENT NEEDED.
+        urlReference.setText(url);
     }
 
     /**

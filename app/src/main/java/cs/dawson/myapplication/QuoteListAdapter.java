@@ -81,9 +81,9 @@ public class QuoteListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent Intent = new Intent(v.getContext(), QuoteActivity.class);
                 Intent.putExtra("nameId",nameId);
-                Intent.putExtra("birthName", birthName); //Puts the character name array into intent
-                Intent.putExtra("blurb", blurb); //Puts the character imgs array into intent
-                Intent.putExtra("dateOfBirth", dateOfbirth);
+                Intent.putExtra("birthName", birthName);
+                Intent.putExtra("blurb", blurb);
+                Intent.putExtra("dateOfbirth", dateOfbirth);
                 Intent.putExtra("url", url);
                 Intent.putExtra("quote", quotes[position]); // puts the selected quote into intent
                 Intent.putExtra("imageUri", imgUri);

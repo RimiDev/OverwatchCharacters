@@ -17,6 +17,7 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         android:onClick="openDialog"/>
 
     <ImageView
@@ -29,8 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/characterDoB"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -38,6 +40,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/fullQuoteSelected"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textSize="40dp"
         />
 
     <TextView
@@ -45,6 +49,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/dateAdded"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
         />
 
     <TextView
@@ -53,6 +58,7 @@
         android:layout_height="37dp"
         android:autoLink="web"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
 
         />
 

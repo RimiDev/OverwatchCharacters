@@ -97,7 +97,7 @@ public class CharacterListAdapter extends BaseAdapter {
                 Intent.putExtra("nameId",characterClicked.getNameId());
                 Intent.putExtra("birthName", characterClicked.getBirthName()); //Puts the character name array into intent
                 Intent.putExtra("blurb", characterClicked.getBlurb()); //Puts the character imgs array into intent
-                Intent.putExtra("dateOfBirth", characterClicked.getDateOfBirth());
+                Intent.putExtra("dateOfbirth", characterClicked.getDateOfBirth());
                 Intent.putExtra("url", characterClicked.getInfoUrl());
                 Intent.putExtra("quotes", characterClicked.getQuotes());
                 Intent.putExtra("dateAdded", characterClicked.getDateAdded());

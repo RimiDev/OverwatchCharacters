@@ -3,6 +3,7 @@
     <string name="exit">Exit</string>
     <string name="characterDialogTitle">More about </string>
     <string name="ok">Okay, thanks!</string>
+    <string name="added">Added: </string>
 
     <string name="random">Random</string>
     <string name="last">Last</string>
