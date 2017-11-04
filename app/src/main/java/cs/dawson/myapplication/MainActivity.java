@@ -2,11 +2,16 @@ package cs.dawson.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -14,13 +19,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import cs.dawson.entities.OverwatchCharacter;
 
-public class MainActivity extends MenuActivity {
+public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     Context context;
@@ -29,20 +36,18 @@ public class MainActivity extends MenuActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabase;
 
-    private List<OverwatchCharacter> allCharacters;
-//    private FirebaseUser mFirebaseUser;
-
-    public static int[] characterImgs = {R.drawable.dino1,R.drawable.dino2,R.drawable.dino3,R.drawable.dino4,R.drawable.dino5, R.drawable.dino1};
+    private ArrayList<OverwatchCharacter> allCharacters;
+    private List<String> iconImgsUri;
+    private List<String> imgsUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+      
         context=this;
 
         //Setting the listview in the main activity to an adapter
-
-
 
 
         // log in to database
@@ -52,48 +57,102 @@ public class MainActivity extends MenuActivity {
         mFirebaseAuth.signInWithEmailAndPassword("someuserfordb@hotmail.com", "android123");
 
         allCharacters = new ArrayList<>();
+        iconImgsUri = new ArrayList<>();
+        imgsUri = new ArrayList<>();
+
         // loads data from database into the private variables
         loadData();
 
-
-        Log.d("allCharacters size333",allCharacters.size()+"");
-
-
-        //displayStuff();
-        // handle error if login was not successful?
-        /*
-        mFirebaseAuth.signInWithEmailAndPassword("someuserfordb@hotmail.com", "android123")
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    // do something if login is successfull
-                    DatabaseReference birthName = mDatabase.child("genji").child("birthName").getRef();
-
-                    Log.d("TAG", birthName);
-                }
-            }
-        });*/
-
-        //mFirebaseUser = mFirebaseAuth.getCurrentUser();
-
-        /*
-        context=this;
-
-        lv=(ListView) findViewById(R.id.listView);
-        customAdapter = new CustomAdapter(this, characterNames ,characterImgs, characterQuotes);
-        lv.setAdapter(customAdapter);
-*/
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_menu, menu);
+        return true;
+    }
 
-    public void launchCharacterListActivity(View view) {
-        Intent i = new Intent(this, CharacterListActivity.class);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.about:
+                // create intent for aboutActivity
+                Intent i = new Intent(this, AboutActivity.class);
+                startActivity(i);
+                return true;
+            case R.id.random:
+                getRandomCharacterAndQuote();
+                return true;
+            case R.id.last:
+                loadCharacterAndLastQuote();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * The following method gets a random character from the list of all the characters
+     * and will get a random quote of that character.
+     */
+    private void getRandomCharacterAndQuote(){
+        Random rand = new Random();
+        int randNum = rand.nextInt(allCharacters.size());
+        OverwatchCharacter overwatchCharacter = allCharacters.get(randNum);
+        String[] allQuotes = overwatchCharacter.getQuotes();
+        int randQuoteNum = rand.nextInt(allQuotes.length);
+        String randQuote = allQuotes[randQuoteNum];
+
+        Intent i = new Intent(this, QuoteActivity.class);
+        i.putExtra("nameId",overwatchCharacter.getNameId());
+        i.putExtra("birthName", overwatchCharacter.getBirthName()); //Puts the character name array into intent
+        i.putExtra("blurb", overwatchCharacter.getBlurb()); //Puts the character imgs array into intent
+        i.putExtra("dateOfBirth", overwatchCharacter.getDateOfBirth());
+        i.putExtra("url", overwatchCharacter.getInfoUrl());
+        i.putExtra("quote", randQuote); // puts the selected quote into intent
+        i.putExtra("imageUri", imgsUri.get(randNum));
+        i.putExtra("dateAdded", overwatchCharacter.getDateAdded());
+
         startActivity(i);
+
     }
 
+    /**
+     * Loads the last clicked character and quote of that character from SharedPreferences.
+     */
+    private void loadCharacterAndLastQuote(){
+        // load from sharedPrefs
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        if(prefs.contains("nameId")) {
+            String nameId = prefs.getString("nameId", "");
+            String birthName = prefs.getString("birthName", "");
+            String blurb = prefs.getString("blurb", "");
+            String dateOfBirth = prefs.getString("dateOfbirth", "");
+            String url = prefs.getString("url", "");
+            String imageUri = prefs.getString("imageUri", "");
+            String dateAdded = prefs.getString("dateAdded", "");
+            String quote = prefs.getString("lastQuote", "");
 
+            Intent i = new Intent(this, QuoteActivity.class);
+            i.putExtra("nameId", nameId);
+            i.putExtra("birthName", birthName); //Puts the character name array into intent
+            i.putExtra("blurb", blurb); //Puts the character imgs array into intent
+            i.putExtra("dateOfBirth", dateOfBirth);
+            i.putExtra("url", url);
+            i.putExtra("quote", quote); // puts the selected quote into intent
+            i.putExtra("imageUri", imageUri);
+            i.putExtra("dateAdded", dateAdded);
+            startActivity(i);
+        }
+        // else nothing happens since there are no saved data
+    }
+
+    /**
+     * The following method will load the characters from the database and create an
+     * OverwatchCharacter object and add it to a private variable of type ArrayList
+     * which will hold all the characters read from the database.
+     */
     private void loadData(){
         mDatabase.child("characters").addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,12 +160,11 @@ public class MainActivity extends MenuActivity {
                 for (DataSnapshot characterDatasnapshot : dataSnapshot.getChildren()) {
                     // create an OverwatchCharacter object for each child of characters
                     OverwatchCharacter character = createCharacter(characterDatasnapshot);
-                    Log.d("character name id :\t", characterDatasnapshot.child("nameId").getValue().toString());
+                    iconImgsUri.add(characterDatasnapshot.child("iconImageUrl").getValue().toString());
+                    imgsUri.add(characterDatasnapshot.child("imageUrl").getValue().toString());
                     allCharacters.add(character);
-                    Log.d("allCharacters size",allCharacters.size()+"");
                 }
-                setData(allCharacters);
-                //characterListAdapter.notifyDataSetChanged();
+                setData();
             }
 
             @Override
@@ -118,14 +176,16 @@ public class MainActivity extends MenuActivity {
 
     }
 
-
-    private void setData(List<OverwatchCharacter> character){
+    /**
+     * The following method will set the quotes taken from the database of each character
+     * to their appropriate OverwatchCharacter object.
+     */
+    private void setData(){
 
         //Accessing the quotes child
         mDatabase.child("quotes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //List<String> quotes = new ArrayList<>();
                 for (DataSnapshot quotesDatasnapshot : dataSnapshot.getChildren()) {
                     // create String[] object that will hold quotes for each character
                     String[] quotes = createCharacterQuotes(quotesDatasnapshot);
@@ -136,8 +196,6 @@ public class MainActivity extends MenuActivity {
                             c.setQuotes(quotes);
                     }
                 }
-
-                displayCharactersAndQuotes();
             }
 
             @Override
@@ -146,52 +204,25 @@ public class MainActivity extends MenuActivity {
             }
         });
 
-
-
-
         lv=(ListView) findViewById(R.id.listView);
-        lv.setAdapter(new CharacterListAdapter(this, allCharacters));
-
-
-        Log.d("allCharacters size2222",allCharacters.size()+"");
+        lv.setAdapter(new CharacterListAdapter(this, allCharacters, iconImgsUri, imgsUri));
     }
 
     /**
-     * // TODO: not sure why...
-     * if we dont do this -> allCharacters is null
-     * @param overwatchCharacter
+     * The following method will return an OverwatchCharacter object based on the
+     * DataSnapshot given which was read from the database. The DataSnapshot is
+     * a child of characters which holds the data of a single character.
+     * @param dataSnapshot
+     * @return
      */
-    private void addToCharacterList(OverwatchCharacter overwatchCharacter){
-        allCharacters.add(overwatchCharacter);
-    }
-
-    /**
-     * for testing TODO delete this method...
-     */
-    private void displayAllCharacters(){
-        for(OverwatchCharacter c : allCharacters)
-            Log.d("character display:\t",  c.getBirthName());
-    }
-
-    /**
-     * for testing TODO delete this method...
-     */
-    private void displayCharactersAndQuotes(){
-        for(OverwatchCharacter c : allCharacters) {
-            Log.d("character display:\t", c.getBirthName());
-            for(String quote : c.getQuotes())
-                Log.d("\tcharacter quote:\t", quote);
-        }
-    }
-
     private OverwatchCharacter createCharacter(DataSnapshot dataSnapshot){
         OverwatchCharacter overwatchCharacter = new OverwatchCharacter();
         overwatchCharacter.setNameId(dataSnapshot.child("nameId").getValue().toString());
         overwatchCharacter.setBirthName(dataSnapshot.child("birthName").getValue().toString());
         overwatchCharacter.setBlurb(dataSnapshot.child("blurb").getValue().toString());
         overwatchCharacter.setDateOfBirth(dataSnapshot.child("dateOfBirth").getValue().toString());
-        overwatchCharacter.setDescription(dataSnapshot.child("description").getValue().toString());
         overwatchCharacter.setInfoUrl(dataSnapshot.child("url").getValue().toString());
+        overwatchCharacter.setDateAdded(dataSnapshot.child("dateAdded").getValue().toString());
         return overwatchCharacter;
     }
 
@@ -212,11 +243,5 @@ public class MainActivity extends MenuActivity {
 
         return quotes;
     }
-
-    public static void logIt(String msg) {
-        final String TAG = "OverWatchQuotes-------";
-        Log.d(TAG, msg);
-    }
-
 
 }

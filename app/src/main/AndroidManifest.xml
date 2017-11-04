@@ -28,6 +28,11 @@
             android:name=".QuoteActivity"
             android:label="Character Description">
         </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="About Page">
+        </activity>
+
 
     </application>
 
