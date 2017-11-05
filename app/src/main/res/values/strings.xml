@@ -1,4 +1,5 @@
 <resources>
+    <string name="appName">QuotesZahraaMax</string>
     <string name="characterTitle">Overwatch Characters</string>
     <string name="exit">Exit</string>
     <string name="characterDialogTitle">More about </string>

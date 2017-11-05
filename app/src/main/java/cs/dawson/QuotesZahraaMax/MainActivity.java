@@ -1,4 +1,4 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 import cs.dawson.entities.OverwatchCharacter;
+import cs.dawson.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 

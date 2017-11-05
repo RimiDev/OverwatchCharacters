@@ -1,4 +1,4 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,21 +9,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.StringLoader;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import cs.dawson.entities.OverwatchCharacter;
+import cs.dawson.myapplication.R;
 
 /**
  * The following class is the Adapter for the MainActivity.

@@ -1,9 +1,11 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import cs.dawson.myapplication.R;
 
 /**
  * Created by 1537681 on 11/2/2017.

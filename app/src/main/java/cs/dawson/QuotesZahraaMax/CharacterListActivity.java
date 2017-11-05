@@ -1,7 +1,6 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 
-import android.app.Activity;
-import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,13 +11,16 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/**
- * The following class is the Activity class for the Quote List.
- * It will set the TextView to the name of the character and lists all the quotes
- * of that character.
- */
-public class QuoteListActivity extends AppCompatActivity {
+import cs.dawson.myapplication.R;
 
+/**
+ * The following class is the Activity for the listing of characters quotes.
+ */
+
+public class CharacterListActivity extends AppCompatActivity {
+
+    ListView lv;
+    Context context;
     String nameId;
     String birthName;
     String blurb;
@@ -45,10 +47,13 @@ public class QuoteListActivity extends AppCompatActivity {
         TextView tvName = (TextView) findViewById(R.id.characterNames);
         tvName.setText(nameId);
 
-        ListView lvshortQuotes = (ListView) findViewById(R.id.shortQuotesListView);
-        lvshortQuotes.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes, imgUri, dateAdded));
+        //Setting the listview in the main activity to an adapter
+        lv=(ListView) findViewById(R.id.shortQuotesListView);
+        lv.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes, imgUri, dateAdded));
 
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -100,7 +105,7 @@ public class QuoteListActivity extends AppCompatActivity {
             i.putExtra("dateAdded", dateAdded);
             startActivity(i);
         }
-        // if there is nothing saved, nothing will get loaded.
+        //else nothing happens since there are no saved data
     }
 
 }

@@ -1,4 +1,4 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,6 +22,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+
+import cs.dawson.myapplication.R;
 
 /**
  * The following class will display the chosen character's details and

@@ -1,4 +1,4 @@
-package cs.dawson.myapplication;
+package cs.dawson.QuotesZahraaMax;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import cs.dawson.myapplication.R;
 
 /**
  * The following class is the Adapter for the QuoteListActivity.

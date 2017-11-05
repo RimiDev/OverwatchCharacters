@@ -5,11 +5,11 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/characterTitle"
+        android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/BlackOnWhite">
-        <activity android:name=".MainActivity">
+        <activity android:name="cs.dawson.QuotesZahraaMax.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,19 +17,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CharacterListActivity"
+            android:name="cs.dawson.QuotesZahraaMax.CharacterListActivity"
             android:label="Overwatch Short Quotes">
         </activity>
         <activity
-            android:name=".QuoteListActivity"
+            android:name="cs.dawson.QuotesZahraaMax.QuoteListActivity"
             >
         </activity>
         <activity
-            android:name=".QuoteActivity"
+            android:name="cs.dawson.QuotesZahraaMax.QuoteActivity"
             android:label="Character Description">
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name="cs.dawson.QuotesZahraaMax.AboutActivity"
             android:label="About Page">
         </activity>
 
