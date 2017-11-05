@@ -8,5 +8,6 @@
     <item android:id="@+id/random"
         android:title="Random" />
     <item android:id="@+id/last"
-        android:title="Last" />
+        android:title="Last"
+        />
 </menu>

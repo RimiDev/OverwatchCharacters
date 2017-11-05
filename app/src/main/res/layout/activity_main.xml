@@ -13,6 +13,7 @@
         android:textStyle="bold"
         android:text="@string/characterTitle" />
 
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"

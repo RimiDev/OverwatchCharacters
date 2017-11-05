@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "239582217468",
-    "firebase_url": "https://quotes-4553a.firebaseio.com",
-    "project_id": "quotes-4553a",
-    "storage_bucket": "quotes-4553a.appspot.com"
+    "project_number": "118799549550",
+    "firebase_url": "https://quotes-5c6a0.firebaseio.com",
+    "project_id": "quotes-5c6a0",
+    "storage_bucket": "quotes-5c6a0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:239582217468:android:da6b77f853eede7a",
+        "mobilesdk_app_id": "1:118799549550:android:780190bb7e0ab82c",
         "android_client_info": {
           "package_name": "cs.dawson.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "239582217468-6i6ea907oel7ker833hl6bkgratlruf9.apps.googleusercontent.com",
+          "client_id": "118799549550-mtar01n9q67rro9jmjs3udjik1352kj6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "cs.dawson.myapplication",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "239582217468-le2r27p54ukqh655jb0fb21j6nlv0u9v.apps.googleusercontent.com",
+          "client_id": "118799549550-sk8t3qorbordep19oqses2sc907p3o2q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA0oXcVIN-o3BzBWJK02u3OVAJ6v4AgAiE"
+          "current_key": "AIzaSyDVaI-L1wEbL5jQLo4VstVuxULWzHZD7IY"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "239582217468-le2r27p54ukqh655jb0fb21j6nlv0u9v.apps.googleusercontent.com",
+              "client_id": "118799549550-sk8t3qorbordep19oqses2sc907p3o2q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

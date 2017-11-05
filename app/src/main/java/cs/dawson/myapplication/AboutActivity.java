@@ -1,6 +1,6 @@
 package cs.dawson.myapplication;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,50 +8,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ImageView;
+
+import cs.dawson.myapplication.MainActivity;
 
 /**
- * The following class is the Activity for the listing of characters quotes.
+ * The following class is the Actvity class for the About page. It will have an Image and
+ * texts.
  */
 
-public class CharacterListActivity extends AppCompatActivity {
-
-    ListView lv;
-    Context context;
-    String nameId;
-    String birthName;
-    String blurb;
-    String dateOfbirth;
-    String url;
-    String[] quotes;
-    String imgUri;
-    String dateAdded;
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.character_shortquotes);
+        setContentView(R.layout.about_activity);
 
-        nameId = getIntent().getExtras().getString("nameId");
-        birthName = getIntent().getExtras().getString("birthName");
-        blurb = getIntent().getExtras().getString("blurb");
-        dateOfbirth = getIntent().getExtras().getString("dateOfbirth");
-        url = getIntent().getExtras().getString("url");
-        quotes = getIntent().getExtras().getStringArray("quotes");
-        imgUri = getIntent().getExtras().getString("imageUri");
-        dateAdded = getIntent().getExtras().getString("dateAdded");
-
-        TextView tvName = (TextView) findViewById(R.id.characterNames);
-        tvName.setText(nameId);
-
-        //Setting the listview in the main activity to an adapter
-        lv=(ListView) findViewById(R.id.shortQuotesListView);
-        lv.setAdapter(new QuoteListAdapter(this, nameId, birthName, blurb, dateOfbirth, url, quotes, imgUri, dateAdded));
-
+        // set image to the about page
+        ImageView aboutIv = (ImageView) findViewById(R.id.aboutImageView);
+        aboutIv.setImageResource(R.drawable.aboutimg);
     }
 
 
+    /**
+     * Inflates the menu into a Menu object.
+     * @param menu
+     * @return true/false
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -59,6 +42,13 @@ public class CharacterListActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Receives the selected menu item and depending on which one will grant a different outcome.
+     * random --> nothing so far.
+     * last --> loadCharacterAndLastQuote which loads the last character and quote that was shown.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -67,6 +57,8 @@ public class CharacterListActivity extends AppCompatActivity {
                 // create intent for aboutActivity
                 Intent i = new Intent(this, AboutActivity.class);
                 startActivity(i);
+                return true;
+            case R.id.random:
                 return true;
             case R.id.last:
                 loadCharacterAndLastQuote();
@@ -103,7 +95,8 @@ public class CharacterListActivity extends AppCompatActivity {
             i.putExtra("dateAdded", dateAdded);
             startActivity(i);
         }
-        //else nothing happens since there are no saved data
+        // else we could display a dialog saying there is no recent selections
     }
+
 
 }

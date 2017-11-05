@@ -5,10 +5,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/characterTitle"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/BlackOnWhite">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +18,21 @@
         </activity>
         <activity
             android:name=".CharacterListActivity"
-            android:label="Overwatch Character Activity">
+            android:label="Overwatch Short Quotes">
         </activity>
         <activity
             android:name=".QuoteListActivity"
-            android:label="Short quotes from the character">
+            >
         </activity>
         <activity
             android:name=".QuoteActivity"
             android:label="Character Description">
         </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="About Page">
+        </activity>
+
 
     </application>
 

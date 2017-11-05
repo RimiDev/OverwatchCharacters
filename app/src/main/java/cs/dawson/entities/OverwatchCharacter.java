@@ -1,12 +1,13 @@
 package cs.dawson.entities;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Created by Zaza on 2017-11-01.
  */
 
-public class OverwatchCharacter {
+public class OverwatchCharacter implements Serializable{
 
     // List<String> or nah?
     private String[] quotes;
@@ -14,23 +15,22 @@ public class OverwatchCharacter {
     private String birthName;
     private String blurb;
     private String dateOfBirth;
-    private String description;
     private String infoUrl;
+    private String dateAdded;
 
     public OverwatchCharacter(){
         this(null, "", "", "", "","","");
     }
 
-    public OverwatchCharacter(String[] quotes, String nameId, String birthName, String blurb, String dateOfBirth, String description, String infoUrl){
-        // TODO maybe we should use ArrayList in order to be able to add more quotes later?
+    public OverwatchCharacter(String[] quotes, String nameId, String birthName, String blurb, String dateOfBirth, String infoUrl, String dateAdded){
         // default is 5
         this.quotes = new String[5];
         this.nameId = nameId;
         this.birthName = birthName;
         this.blurb = blurb;
         this.dateOfBirth = dateOfBirth;
-        this.description = description;
         this.infoUrl = infoUrl;
+        this.dateAdded = dateAdded;
 
     }
 
@@ -75,14 +75,6 @@ public class OverwatchCharacter {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getInfoUrl() {
         return infoUrl;
     }
@@ -91,15 +83,24 @@ public class OverwatchCharacter {
         this.infoUrl = infoUrl;
     }
 
+    public String getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(String dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
     @Override
     public String toString() {
-        return "Character{" +
+        return "OverwatchCharacter{" +
                 "quotes=" + Arrays.toString(quotes) +
+                ", nameId='" + nameId + '\'' +
                 ", birthName='" + birthName + '\'' +
                 ", blurb='" + blurb + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", description='" + description + '\'' +
                 ", infoUrl='" + infoUrl + '\'' +
+                ", dateAdded='" + dateAdded + '\'' +
                 '}';
     }
 }

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cs.dawson.myapplication.QuoteActivity">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/characterName"
         android:layout_width="match_parent"
@@ -14,6 +17,7 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         android:onClick="openDialog"/>
 
     <ImageView
@@ -26,8 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/characterDoB"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="20dp"
         />
 
     <TextView
@@ -35,6 +40,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/fullQuoteSelected"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textSize="40dp"
         />
 
     <TextView
@@ -42,19 +49,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/dateAdded"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
         />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/urlReference"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:autoLink="web"
         android:textAlignment="center"
+        android:layout_marginTop="10dp"
+
         />
 
-
-
-
-
-
-
 </LinearLayout>
+
+
+
+</ScrollView>
