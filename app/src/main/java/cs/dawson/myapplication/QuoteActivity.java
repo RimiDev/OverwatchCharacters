@@ -153,7 +153,9 @@ public class QuoteActivity extends AppCompatActivity {
     private void setTextsToTextViews(){
         //character name
         characterNameTv.setText(nameId);
-
+        //birth name
+        TextView birthNameTv = (TextView) findViewById(R.id.birthName);
+        birthNameTv.setText(birthName);
         //data of birth of character
         TextView characterDoBTv = (TextView) findViewById(R.id.characterDoB);
         characterDoBTv.setText(dateOfbirth);

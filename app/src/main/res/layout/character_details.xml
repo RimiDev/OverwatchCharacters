@@ -20,6 +20,15 @@
         android:layout_marginBottom="10dp"
         android:onClick="openDialog"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/birthName"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
