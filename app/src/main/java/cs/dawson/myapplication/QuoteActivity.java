@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -190,7 +191,7 @@ public class QuoteActivity extends AppCompatActivity {
      */
     private void setClickableCharacterName(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(blurb).setTitle(R.string.characterDialogTitle);
+        builder.setMessage(Html.fromHtml("<font color='#ffffff'>" + blurb + "</font>")).setTitle(R.string.characterDialogTitle);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
